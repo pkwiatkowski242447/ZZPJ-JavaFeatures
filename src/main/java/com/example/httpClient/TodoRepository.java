@@ -1,6 +1,7 @@
 package com.example.httpClient;
 
 import java.io.IOException;
+import java.net.HttpRetryException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
@@ -10,11 +11,14 @@ import java.net.http.HttpResponse;
 public class TodoRepository {
 
     String getTodo() throws URISyntaxException, IOException, InterruptedException {
-        // TODO: implement here
         // use HttpResponse.BodyHandlers.ofString() handler
         // return response body
-
-        return "";
+        HttpRequest request = HttpRequest.newBuilder()
+        .uri(new URI("https://jsonplaceholder.typicode.com/todos/1"))
+        .build();
+        HttpResponse<String> response =
+                HttpClient.newHttpClient().send(request,HttpResponse.BodyHandlers.ofString());
+        return response.body();
     }
 
 }
