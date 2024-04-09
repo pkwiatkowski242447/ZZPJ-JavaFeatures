@@ -18,8 +18,6 @@ public class StringService {
     }
 
     List<String> extendFoundStringByRepeatSomeTimes(List<String> list, String searchedText, int nTimesRepeat) {
-        // TODO: implement here
-        // FIXME: could be better?
         // search for searchedText in a list. Change this string by repeat n times if found
         return list.stream()
                 .map((s) -> {
